@@ -1,4 +1,7 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const upload = multer();
 
 // * Concatenar rutas o unir directorios
 const path = require('path'); 
@@ -11,15 +14,26 @@ const morgan = require('morgan');
 // * Calling routes
 const testingRoutes = require('./routes/test.routes');
 
+// * Settings
+
 const app = express();
 
-// * Settings
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
-
 app.use(morgan('dev'));
+// * https://www.tutorialspoint.com/expressjs/expressjs_form_data.htm
 
-app.use(express.json());
+// * for parsing application/json
+app.use(bodyParser.json()); 
+
+//* for parsing application/xwww-
+app.use(bodyParser.urlencoded({ extended: true })); 
+//form-urlencoded
+
+//* for parsing multipart/form-data
+app.use(upload.array()); 
+
+
 
 // * Ejecuting routes 
 app.use(testingRoutes);

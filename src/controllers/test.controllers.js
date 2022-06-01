@@ -29,10 +29,11 @@ const testing = async (req, res) => {
 
 const guardar = async (req, res) => {
     
-    res.json({
-        mensaje : "Exito"
-    })
-
+   // res.json({
+        //mensaje : "Exito"
+   // })
+    console.log(req.body);
+    res.send("recieved your request!");
 }
 
 module.exports = {
