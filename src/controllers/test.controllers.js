@@ -1,6 +1,7 @@
 const { pool } = require('../psql');
 const testmodel = require('../models/testmodel');
 
+
 const index = async (req, res) => {
 
     console.log(req.body)
@@ -30,8 +31,7 @@ const testing = async (req, res) => {
 
 const guardar = async (req, res) => {
 
-    //* Please read: https://opensourcelibs.com/lib/sequelize-handlers
-    //* Please read: https://github.com/mattkrea/sequelize-handlers
+    //* Please read: https://www.npmjs.com/package/sequelize-to-json
     console.log(req.body);
     res.send("<h1>Data inserted</h1>");
     
