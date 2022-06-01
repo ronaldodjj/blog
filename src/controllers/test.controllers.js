@@ -31,6 +31,7 @@ const testing = async (req, res) => {
 const guardar = async (req, res) => {
 
     //* Please read: https://opensourcelibs.com/lib/sequelize-handlers
+    //* Please read: https://github.com/mattkrea/sequelize-handlers
     console.log(req.body);
     res.send("<h1>Data inserted</h1>");
     
