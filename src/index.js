@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer();
+const Sequelize = require('sequelize');
 
 // * Concatenar rutas o unir directorios
 const path = require('path'); 
@@ -10,6 +11,9 @@ const ejs = require('ejs');
 
 const morgan = require('morgan');
 
+//* Database connection
+
+const connection = require('./connection');
 
 // * Calling routes
 const testingRoutes = require('./routes/test.routes');
