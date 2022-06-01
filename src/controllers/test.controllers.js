@@ -1,4 +1,5 @@
 const { pool } = require('../psql');
+const testmodel = require('../models/testmodel');
 
 const index = async (req, res) => {
 
@@ -28,12 +29,11 @@ const testing = async (req, res) => {
 }
 
 const guardar = async (req, res) => {
-    
-   // res.json({
-        //mensaje : "Exito"
-   // })
+
+
     console.log(req.body);
-    res.send("recieved your request!");
+    res.send("<h1>Data inserted</h1>");
+    
 }
 
 module.exports = {

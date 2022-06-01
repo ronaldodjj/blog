@@ -20,6 +20,7 @@
     "multer": "^1.4.5-lts.1",
     "pg": "^8.7.3",
     "sequelize": "^6.20.1",
+    "sequelize-handlers": "^1.0.7",
     "sqlite3": "^5.0.8"
   },
   "devDependencies": {

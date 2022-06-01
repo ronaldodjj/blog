@@ -15,6 +15,10 @@ const morgan = require('morgan');
 
 const connection = require('./connection');
 
+//* Models routing
+
+const models = require('./models/testmodel');
+
 // * Calling routes
 const testingRoutes = require('./routes/test.routes');
 
