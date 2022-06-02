@@ -1,6 +1,6 @@
 const { pool } = require('../psql');
 const testmodel = require('../models/testmodel');
-
+const sequelize = require('../connection');
 
 const index = async (req, res) => {
 
@@ -31,9 +31,25 @@ const testing = async (req, res) => {
 
 const guardar = async (req, res) => {
 
-    //* Please read: https://www.npmjs.com/package/sequelize-to-json
-    console.log(req.body);
-    res.send("<h1>Data inserted</h1>");
+    sequelize.sync({force:true})
+    .then(() => {
+        console.log(`Database & tables created!`);
+        //* sample notes that we'll then persist in the database
+        testmodel.bulkCreate([
+            {
+            name: req.body.name, 
+            email: req.body.email,
+            subject: req.body.subject,
+            message: req.body.message
+            }
+        ]).then(function(){
+            return testmodel.findAll();
+        }).then(function(notes){
+            console.log(notes);
+        });
+    });
+       
+    res.send("<h1>Data inserted</h1>")
     
 }
 
