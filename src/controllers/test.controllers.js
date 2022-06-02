@@ -1,4 +1,6 @@
 const { pool } = require('../psql');
+const testmodel = require('../models/testmodel');
+const sequelize = require('../connection');
 
 const index = async (req, res) => {
 
@@ -29,11 +31,31 @@ const testing = async (req, res) => {
 
 const guardar = async (req, res) => {
     
-   // res.json({
-        //mensaje : "Exito"
-   // })
-    console.log(req.body);
-    res.send("recieved your request!");
+    //* Validate information
+    
+    
+
+    //* Posting data to the database
+    sequelize.sync({force:false})//*Sync model to the database if it is false it won't erase anything from the database
+    .then(() => {
+        console.log(`Database & tables created!`);
+        //* sample notes that we'll then persist in the database
+        testmodel.bulkCreate([
+            {
+            name: req.body.name, 
+            email: req.body.email,
+            subject: req.body.subject,
+            message: req.body.message
+            }
+        ]).then(function(){
+            return testmodel.findAll();
+        }).then(function(notes){
+            console.log(notes);
+        });
+    });
+       
+    res.redirect('/');
+    
 }
 
 module.exports = {
