@@ -30,8 +30,13 @@ const testing = async (req, res) => {
 }
 
 const guardar = async (req, res) => {
+    
+    //* Validate information
+    
+    
 
-    sequelize.sync({force:false})
+    //* Posting data to the database
+    sequelize.sync({force:false})//*Sync model to the database if it is false it won't erase anything from the database
     .then(() => {
         console.log(`Database & tables created!`);
         //* sample notes that we'll then persist in the database
