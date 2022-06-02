@@ -31,7 +31,7 @@ const testing = async (req, res) => {
 
 const guardar = async (req, res) => {
 
-    sequelize.sync({force:true})
+    sequelize.sync({force:false})
     .then(() => {
         console.log(`Database & tables created!`);
         //* sample notes that we'll then persist in the database
@@ -49,7 +49,7 @@ const guardar = async (req, res) => {
         });
     });
        
-    res.send("<h1>Data inserted</h1>")
+    res.redirect('/');
     
 }
 
